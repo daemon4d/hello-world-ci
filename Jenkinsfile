@@ -1,16 +1,13 @@
 pipeline {
-    agent none
-    stages {
-        stage('Example Build') {
-            agent any
-            steps {
-                echo 'Hello, Maven'
-            }
+    agent {
+        docker {
+            image 'softinstigate/serverless'
         }
-        stage('Example Test') {
-            agent any
+    }
+    stages {
+        stage('Build') {
             steps {
-                echo 'Hello, JDK'
+                sh 'serverless deploy'
             }
         }
     }
