@@ -5,9 +5,10 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'serverless deploy'
+                sh 'npm install'
+                sh 'npm test'
             }
         }
     }
